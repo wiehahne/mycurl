@@ -349,7 +349,7 @@ printf "\n%-36s %-15s %-15s %-15s" "Upload Size bytes" "$uploadedbytesaverage" "
 printf "\n%-36s %-15s %-15s %-15s" "Upload Speed bytes/s" "$uploadspeedbytesaverage" "$maxuploadspeedbytes" "$minuploadspeedbytes"
 printf "\n%-36s %-15s %-15s %-15s" "Total Time Seconds" "$totaltimeaverage" "$mintotaltime" "$maxtotaltime"
 # HTTP response code info
-printf "\n"
+printf "\n\n"
 echo -ne "-==HTTP Status Codes==-"
 printf "\n%-10s %-10s %-10s" "200s $http200" "301s $http301 " "302s $http302" "303s $http303" "304s $http304" "401s $http401" "403s $http403" "404s $http404" "500s $http500" "501s $http501" "502s $http502" "503s $http503" "504s $http504"
 printf "\n%-10s %-90s" "OTHR $otherhttpcodes" "Other known HTTP codes not listed here. View output file \"$outputfile\" for output log"
