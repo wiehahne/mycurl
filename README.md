@@ -23,12 +23,14 @@ eugene.wiehahn@gmail.com .
 
 To download the very latest source off the Git server do this:
 
-    git clone https://github.com/curl/curl.git
+    git clone https://github.com/wiehahne/mycurl
 
-(you'll get a directory named curl created, filled with the source code)
+With the script cloned you can either execute it by running './mycurl'
+or configure an [alias] (http://www.linfo.org/alias.html)
+or move it to your bin directory.
 
 ## mycurl usage
 
-Syntax for use: mycurl (url) (sleeptimer in seconds) (outputfile)
+Syntax for use: ./mycurl (url) (sleeptimer in seconds) (outputfile)
 In order to execute a quick run by simply specifying "curl <url>" there is a
 default sleep timer of 2 seconds and output file of './mycurl_output.log'
