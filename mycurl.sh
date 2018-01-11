@@ -313,21 +313,25 @@ echo -ne "
 Initiated time: $scriptstartdate | CURL URL = $curlurl | Outputfile = $outputfile | Sleeptimer = $sleeptimer
 ...................................................................................................................................
 Date                                                         `date --u`
-Source/Destnation                                            $srcip:$srcport -> $dstip:$dstport
-HTTP Version                                                 $httpversion
-Redirect URL                                                 $redirecturl
-Effective URL                                                $effectiveurl
-HTTP Response Code                                           $httpcode
-DNS Lookup Time                                              $dnslookupseconds seconds
-SSL Success                                                  $sslverifyresult (0 = Success)
-SSL Handshake Time                                           $sslhandshakeseconds seconds
-TCP Handshake Time                                           $tcphandshakeseconds seconds
-Time Taken Pre-File Transfer                                 $pretransferseconds seconds (Commands, negotiations & protocol times)
-Time Taken Till Response First Byte                          $firstbyteseconds seconds (Pre-File Tranfer & Server Processing Times)
-Download Size (Payload)                                      $downloadedbytes bytes @ Average $downloadspeedbytes bytes/s
-Upload Size (Payload)                                        $uploadedbytes bytes @ Average $uploadspeedbytes bytes/s
-Total Request Time                                           $totaltime seconds
+Source IP                                                    $srcip          
+Source Port                                                  $srcport          
+Destnation IP                                                $dstip          
+Destination Port                                             $dstport          
+HTTP Version                                                 $httpversion          
+Redirect URL                                                 $redirecturl          
+Effective URL                                                $effectiveurl          
+HTTP Response Code                                           $httpcode          
+DNS Lookup Time                                              $dnslookupseconds    seconds
+SSL Success                                                  $sslverifyresult   (0 = Success)
+SSL Handshake Time                                           $sslhandshakeseconds     seconds
+TCP Handshake Time                                           $tcphandshakeseconds     seconds
+Time Taken Pre-File Transfer                                 $pretransferseconds     seconds (Commands, negotiations & protocol times)
+Time Taken Till Response First Byte                          $firstbyteseconds     seconds (Pre-File Tranfer & Server Processing Times)
+Download Size (Payload)                                      $downloadedbytes     bytes @ Average $downloadspeedbytes bytes/s
+Upload Size (Payload)                                        $uploadedbytes     bytes @ Average $uploadspeedbytes bytes/s
+Total Request Time                                           $totaltime     seconds
 ...Above Output appended to file \"$outputfile\"..." | tee -a $outputfile;
+
 
 
 
@@ -346,21 +350,29 @@ printf "\n%-36s %-15s %-15s %-15s" "Upload Speed bytes/s" "$uploadspeedbytesaver
 printf "\n%-36s %-15s %-15s %-15s" "Total Time Seconds" "$totaltimeaverage" "$mintotaltime" "$maxtotaltime"
 # HTTP response code info
 printf "\n"
-printf "\n%-25s %-10s %-90s" "200 Response code Count:" "$http200" "Successful: OK within timeout seconds"
-printf "\n%-25s %-10s %-90s" "301 Response code Count:" "$http301" "Redirection: Moved Permanently"
-printf "\n%-25s %-10s %-90s" "302 Response code Count:" "$http302" "Redirection: Found residing temporarily under different URI"
-printf "\n%-25s %-10s %-90s" "303 Response code Count:" "$http303" "Redirection: See Other"
-printf "\n%-25s %-10s %-90s" "304 Response code Count:" "$http304" "Redirection: Not Modified"
-printf "\n%-25s %-10s %-90s" "401 Response code Count:" "$http401" "Client Error: Unauthorized"
-printf "\n%-25s %-10s %-90s" "403 Response code Count:" "$http403" "Client Error: Forbidden"
-printf "\n%-25s %-10s %-90s" "404 Response code Count:" "$http404" "Client Error: Not Found"
-printf "\n%-25s %-10s %-90s" "500 Response code Count:" "$http500" "Server Error: Internal Server Error"
-printf "\n%-25s %-10s %-90s" "501 Response code Count:" "$http501" "Server Error: Not Implemented"
-printf "\n%-25s %-10s %-90s" "502 Response code Count:" "$http502" "Server Error: Bad Gateway"
-printf "\n%-25s %-10s %-90s" "503 Response code Count:" "$http503" "Server Error: Service Unavailable"
-printf "\n%-25s %-10s %-90s" "504 Response code Count:" "$http504" "Server Error: Gateway Timeout within timeout seconds"
-printf "\n%-25s %-10s %-90s" "OTH Response code Count:" "$otherhttpcodes" "Other known HTTP codes not listed here. View output file \"$outputfile\" for output log"
-printf "\n%-25s %-10s %-90s" "UNK Response code Count:" "$httpunknown" "Unknown HTTP response code received. View output file \"$outputfile\" for output log"
+echo -ne "-==HTTP Status Codes==-"
+printf "\n%-10s %-10s %-10s" "200s $http200" "301s $http301 " "302s $http302" "303s $http303" "304s $http304" "401s $http401" "403s $http403" "404s $http404" "500s $http500" "501s $http501" "502s $http502" "503s $http503" "504s $http504"
+printf "\n%-10s %-90s" "OTHR $otherhttpcodes" "Other known HTTP codes not listed here. View output file \"$outputfile\" for output log"
+printf "\n%-10s %-90s" "UNKN $httpunknown" "Unknown HTTP response code received. View output file \"$outputfile\" for output log"
+
+# Long status code version - currently disabled due to support for smaller screen sizes.
+# printf "HTTP Status code totals"
+# printf "\n%-25s %-10s %-90s" "200 Response code Count:" "$http200" "Successful: OK within timeout seconds"
+# printf "\n%-25s %-10s %-90s" "301 Response code Count:" "$http301" "Redirection: Moved Permanently"
+# printf "\n%-25s %-10s %-90s" "302 Response code Count:" "$http302" "Redirection: Found residing temporarily under different URI"
+# printf "\n%-25s %-10s %-90s" "303 Response code Count:" "$http303" "Redirection: See Other"
+# printf "\n%-25s %-10s %-90s" "304 Response code Count:" "$http304" "Redirection: Not Modified"
+# printf "\n%-25s %-10s %-90s" "401 Response code Count:" "$http401" "Client Error: Unauthorized"
+# printf "\n%-25s %-10s %-90s" "403 Response code Count:" "$http403" "Client Error: Forbidden"
+# printf "\n%-25s %-10s %-90s" "404 Response code Count:" "$http404" "Client Error: Not Found"
+# printf "\n%-25s %-10s %-90s" "500 Response code Count:" "$http500" "Server Error: Internal Server Error"
+# printf "\n%-25s %-10s %-90s" "501 Response code Count:" "$http501" "Server Error: Not Implemented"
+# printf "\n%-25s %-10s %-90s" "502 Response code Count:" "$http502" "Server Error: Bad Gateway"
+# printf "\n%-25s %-10s %-90s" "503 Response code Count:" "$http503" "Server Error: Service Unavailable"
+# printf "\n%-25s %-10s %-90s" "504 Response code Count:" "$http504" "Server Error: Gateway Timeout within timeout seconds"
+# printf "\n%-25s %-10s %-90s" "OTH Response code Count:" "$otherhttpcodes" "Other known HTTP codes not listed here. View output file \"$outputfile\" for output log"
+# printf "\n%-25s %-10s %-90s" "UNK Response code Count:" "$httpunknown" "Unknown HTTP response code received. View output file \"$outputfile\" for output log"
+
 
 
 # keep track of script run count
