@@ -2,11 +2,12 @@ Often times when investigating slow website response or intermittent website dow
 
 That said it is possible to extract this information with curl, however it is normally not easily readable and especially with intermittent issues not easily tracked and calculated over time.
 
-Having this information readily available often assists with quickly identifying root cause whilst troubleshooting intermittent issues in webserver(s). Simply running a curl request repeatedly isn't always fruitful as the previous information is lost. Even when saving this information in a file it generally takes some time as the data isn't easily analyzed over time and lacks tracking/computation of the output across all curl requests ran.
+Having this information readily available often assists with quickly identifying root cause whilst troubleshooting intermittent issues in (mainly) web-server(s). Simply running a curl request repeatedly isn't always fruitful as the previous information is lost. Even when saving this information in a file it generally takes some time as the data isn't easily analyzed over time and lacks tracking/computation of the output across all curl requests ran.
 
 Due to this I wrote a bash script to assist me with quickly and easily extracting the above info and called it mycurl (mimicking the very epic mtr (my traceroute) name as it also tracks and averages output over time). Here is a rough summary of what mycurl will provide.
 
 Live info (for each curl) included in mycurl output:
+
 - Date/time
 - Source/Destination IP/port pair
 - HTTP version
@@ -22,6 +23,7 @@ Live info (for each curl) included in mycurl output:
 - Total Request Time
 
 Latency time info tracking (for all curl requests over script runtime - runcount is also tracked and incrimented) included in mycurl output:
+
 Average/Best/Worst tracked for all curls ran over time including:
 - DNS lookup time
 - TCP/SSL handshake time
@@ -33,7 +35,6 @@ Average/Best/Worst tracked for all curls ran over time including:
 And tracking of HTTP Reponse Status Codes, incrementing live as responses are received. - This is helpful should unwanted responses codes be intermittent.
 
 When troubleshooting slow website response issues it's nice to have a live view of what is impacting the response time to be slow - especially on average as this data sometimes points to a different root cause.
-
 
 Find out how to use native curl by reading [the curl.1 man
 page](https://curl.haxx.se/docs/manpage.html) or [the MANUAL
