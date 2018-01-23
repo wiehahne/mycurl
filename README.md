@@ -1,13 +1,10 @@
-mycurl is a bash script to conitnuously run curl requests and provide live, tracked, calculated, human readable
-output that is also saved for troubleshooting/investigative purposes.
+Often times when investigating slow website response or intermittent website downtime it's difficult to have a quick view of what exactly is causing these issues. With curl being an amazing tool to investigate such issues it does lack the native tracking and calculation of data over time.
 
-Often times when investigating slow website response or intermittend website downtime it's difficult to have a quick view of what exactly is causing these issues. With curl being an amazing tool to investigate such issues it does lack the native tracking and calculation of data over time.
-
-That said it is possible to extract this information with curl, however it is normally not easily readible and especially with intermittent issues not easily tracked and calculated over time.
+That said it is possible to extract this information with curl, however it is normally not easily readable and especially with intermittent issues not easily tracked and calculated over time.
 
 Having this information readily available often assists with quickly identifying root cause whilst troubleshooting intermittent issues in webserver(s). Simply running a curl request repeatedly isn't always fruitful as the previous information is lost. Even when saving this information in a file it generally takes some time as the data isn't easily analyzed over time and lacks tracking/computation of the output across all curl requests ran.
 
-Due to this I wrote a bash script to assist me with quickly and easily extracting the above info. Here is a rough summary of what mycurl will provide.
+Due to this I wrote a bash script to assist me with quickly and easily extracting the above info and called it mycurl (mimicking the very epic mtr (my traceroute) name as it also tracks and averages output over time). Here is a rough summary of what mycurl will provide.
 
 Live info (for each curl) included in mycurl output:
 - Date/time
