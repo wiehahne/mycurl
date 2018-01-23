@@ -10,29 +10,29 @@ Having this information readily available often assists with quickly identifying
 Due to this I wrote a bash script to assist me with quickly and easily extracting the above info. Here is a rough summary of what mycurl will provide.
 
 Live info (for each curl) included in mycurl output:
-> Date/time
-> Source/Destination IP/port pair
-> HTTP version
-> Redirect/Effective URL
-> Response code
-> TCP/SSL handshake time
-> Time Taken Pre-File Transfer
-> Time Taken Till Response First Byte
-> Download Size (Payload)
-> Upload Size (Payload)
-> Average Download bytes/s
-> Average Upload bytes/s
-> Total Request Time
+- Date/time
+- Source/Destination IP/port pair
+- HTTP version
+- Redirect/Effective URL
+- Response code
+- TCP/SSL handshake time
+- Time Taken Pre-File Transfer
+- Time Taken Till Response First Byte
+- Download Size (Payload)
+- Upload Size (Payload)
+- Average Download bytes/s
+- Average Upload bytes/s
+- Total Request Time
 
 Latency time info tracking (for all curl requests over script runtime - runcount is also tracked and incrimented) included in mycurl output:
 Average/Best/Worst tracked for all curls ran over time including:
-> DNS lookup time
-> TCP/SSL handshake time
-> Pre-file transfer time
-> Time taken till response first byte
-> Download/Upload size
-> Average bytes/s
-> Total Request Time
+- DNS lookup time
+- TCP/SSL handshake time
+- Pre-file transfer time
+- Time taken till response first byte
+- Download/Upload size
+- Average bytes/s
+- Total Request Time
 And tracking of HTTP Reponse Status Codes, incrementing live as responses are received. - This is helpful should unwanted responses codes be intermittent.
 
 When troubleshooting slow website response issues it's nice to have a live view of what is impacting the response time to be slow - especially on average as this data sometimes points to a different root cause.
