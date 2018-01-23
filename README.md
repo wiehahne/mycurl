@@ -68,7 +68,7 @@ or move it to your bin directory.
 
     ./mycurl (url) (sleeptimer in seconds) (outputfile)
 
-In order to execute a quick run by simply specifying "curl <url>" there is a
+In order to execute a quick run by simply specifying "curl url" there is a
 default sleep timer of 2 seconds and output file of './mycurl_output.log'
 
     ./mycurl (url)
