@@ -14,7 +14,7 @@
         outputfile=$3   # User specified file to pipe output to
 
 
-        scriptstartdate=`date --u`
+        scriptstartdate=`date -u`
 
 # set all HTTP code variables to 0
 http000=0;http100=0;http101=0;http200=0;http201=0;http202=0;http203=0;http204=0;http205=0;http206=0;http300=0;http301=0;http302=0;http303=0;http304=0;http305=0;http306=0;http307=0;http400=0;http401=0;http402=0;http403=0;http404=0;http405=0;http406=0;http407=0;http408=0;http409=0;http410=0;http411=0;http412=0;http413=0;http414=0;http415=0;http416=0;http417=0;http500=0;http501=0;http502=0;http503=0;http504=0;http505=0;httpunknown=0;otherhttpcodes=0
@@ -312,7 +312,7 @@ echo -ne "
                                     Running mycurl with the following parameters
 Initiated time: $scriptstartdate | CURL URL = $curlurl | Outputfile = $outputfile | Sleeptimer = $sleeptimer
 ...................................................................................................................................
-Date                                                         `date --u`
+Date                                                         `date -u`
 Source IP                                                    $srcip          
 Source Port                                                  $srcport          
 Destnation IP                                                $dstip          
