@@ -11,7 +11,7 @@
 # user specified variables
         curlurl=$1      # User specified URL to curl
         sleeptimer=$2   # User specified sleep timer (in seconds)
-        outputfile=$3   # User specified file to pipe output to
+        outputfile=`date -u +%F_%T`UTC_$3.log   # User specified file to pipe output to
 
 
         scriptstartdate=`date -u`
@@ -30,24 +30,24 @@ maxdnslookupseconds=0;mindnslookupseconds=9999999999;maxsslhandshakeseconds=0;mi
 clear
 
 # check for a URL parameter
-if [ -z "$curlurl" ]
+if [ -z "$1" ]
 then
         echo "Syntax invalid: mycurl <curl_URL> <sleep_seconds> <outputfile_location>"
         exit
 fi
 
 # check for a sleep timer parameter
-if [ -z "$sleeptimer" ]
+if [ -z "$2" ]
 then
         defaultsleeptimer="No sleep timer specified, using default value of 2 seconds - Expected Syntax: mycurl <curl_URL> <sleep_seconds> <outputfile_location>"
         sleeptimer=2
 fi
 
 # check for an output pipe file parameter
-if [ -z "$outputfile" ]
+if [ -z "$3" ]
 then
         defaultoutputfile="No output file specified, using default value of /.mycurl_output.txt - Expected Syntax: mycurl <curl_URL> <sleep_seconds> <outputfile_location>"
-        outputfile=./output_mycurl.txt
+        outputfile=`date -u +%F_%T`UTC_mycurl.log
 fi
 
 
